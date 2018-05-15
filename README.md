@@ -5,7 +5,7 @@ No better jokes then dad jokes. Use this quick and easy app for those who need d
 
 Feel free to contribute and suggest updates.
 # How To Build
-The app is currently being published to the app store for ease of download. Otherwise I have included the apk directly above as an apk file. You can simply download onto your phone by following this link [here](https://github.com/towcar/DadJokes/raw/master/app-release.apk)
+The app is currently being published to the app store for ease of download. Until then I have included the apk directly above as an apk file. You can simply download onto your phone by following this link [here](https://github.com/towcar/DadJokes/raw/master/app-release.apk). Make sure you allow downloads from unknown sources.
 
 # Features To Add
 * Search by keyword
