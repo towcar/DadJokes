@@ -10,5 +10,5 @@ import static org.junit.Assert.*;
  * Feel free to use code just give credit please :)
  */
 public class MainActivityTest {
-    
+
 }

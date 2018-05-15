@@ -26,6 +26,7 @@ public class JokeFetcher {
                 //pull the response and pass into a string
                 Jokes.Data responseData = (Jokes.Data) response.data();
                 jokeText = responseData.joke().joke();
+                Log.e("setupJoke","Joke Setup:" + jokeText);
             }
 
             @Override

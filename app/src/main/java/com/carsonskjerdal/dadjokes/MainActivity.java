@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +18,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.LinearLayout;
 
 
+import com.carsonskjerdal.dadjokes.Fragments.AboutFragment;
+import com.carsonskjerdal.dadjokes.Fragments.FavoriteFragment;
 import com.carsonskjerdal.dadjokes.Fragments.RandomFragment;
 
 import java.util.ArrayList;
@@ -35,19 +38,27 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     private List<SlideMenuItem> list = new ArrayList<>();
     private ViewAnimator viewAnimator;
     private LinearLayout linearLayout;
+    RandomFragment fragmentRandom;
     View view;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        JokeFetcher.setupJoke();
-
-        RandomFragment fragmentRandom = RandomFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, fragmentRandom)
-                .commit();
+        if(savedInstanceState == null) {
+            //Grab initial joke (setup loaded eventually)
+            JokeFetcher.setupJoke();
+            //Create new fragment
+            fragmentRandom = RandomFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, fragmentRandom)
+                    .commit();
+        } else {
+            //Grab original fragment
+            fragmentRandom = (RandomFragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
+        }
 
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
@@ -65,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         createMenuList();
         viewAnimator = new ViewAnimator<>(this, list, fragmentRandom, drawerLayout, this);
     }
+
 
     //set up the action bar with included drawer function
     private void setActionBar() {
@@ -117,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
     }
 
     private ScreenShotable replaceFragment(Resourceble slideMenuItem,ScreenShotable screenShotable, int topPosition) {
+        //sets up animation and swaps underlying fragments for more functionality
         view = findViewById(R.id.content_frame);
         int finalRadius = Math.max(view.getWidth(), view.getHeight());
         Animator animator = ViewAnimationUtils.createCircularReveal(view, 0, topPosition, 0, finalRadius);
@@ -124,32 +137,40 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
         findViewById(R.id.content_overlay).setBackground(new BitmapDrawable(getResources(), screenShotable.getBitmap()));
         animator.start();
+
+        //switch fragments
         Fragment fragment;
-        Log.e("Item", "" + slideMenuItem.getName());
+
         switch (slideMenuItem.getName()){
             case "Random":
                 fragment  = RandomFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment ).commit();
-                Log.e("Item", "" + slideMenuItem.getName());
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Random" ).commit();
                 return (ScreenShotable) fragment;
-            case "Book":
+            case "Search":
                 fragment = RandomFragment .newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment ).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Scratch" ).commit();
                 return (ScreenShotable) fragment;
-            case "Paint":
+            case "Small":
                 fragment= RandomFragment .newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment ).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Small" ).commit();
                 return (ScreenShotable) fragment;
-            case "Case":
+            case "Master":
                 fragment = RandomFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Master").commit();
+                return (ScreenShotable) fragment;
+            case "Favorite":
+                fragment= FavoriteFragment.newInstance();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Favorite" ).commit();
+                return (ScreenShotable) fragment;
+            case "About":
+                fragment = AboutFragment.newInstance();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "About").commit();
                 return (ScreenShotable) fragment;
             default:
                 break;
         }
         fragment  = RandomFragment.newInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment ).commit();
-        Log.e("Item", "Why Is this Called?");
         return (ScreenShotable) fragment;
     }
 
@@ -182,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
 
     private void createMenuList() {
         //Attach string and icon to MenuItem.
-        SlideMenuItem menuItem0 = new SlideMenuItem("Close", R.drawable.icn_close);
+        SlideMenuItem menuItem0 = new SlideMenuItem("Close", R.drawable.close);
         list.add(menuItem0);
         SlideMenuItem menuItem = new SlideMenuItem("Random", R.drawable.ic_random);
         list.add(menuItem);
@@ -198,4 +219,5 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         list.add(menuItem6);
 
     }
+
 }

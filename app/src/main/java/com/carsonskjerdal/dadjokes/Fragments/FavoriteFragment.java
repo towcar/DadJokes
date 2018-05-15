@@ -23,17 +23,16 @@ import yalantis.com.sidemenu.interfaces.ScreenShotable;
  * <p>
  * Feel free to use code just give credit please :)
  */
-public class RandomFragment extends Fragment implements ScreenShotable, Button.OnClickListener {
+public class FavoriteFragment extends Fragment implements ScreenShotable, Button.OnClickListener {
 
 
-    // public static final String BASE_URL = "http://api.open-notify.org/";
     private View fragment_view;
     private Bitmap bitmap;
     private TextView text;
 
 
-    public static RandomFragment newInstance() {
-        return new RandomFragment();
+    public static FavoriteFragment newInstance() {
+        return new FavoriteFragment();
     }
 
     @Override
@@ -75,7 +74,7 @@ public class RandomFragment extends Fragment implements ScreenShotable, Button.O
 
                 Canvas canvas = new Canvas(bitmap);
                 fragment_view.draw(canvas);
-                RandomFragment.this.bitmap = bitmap;
+                FavoriteFragment.this.bitmap = bitmap;
             }
         };
 
