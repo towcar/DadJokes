@@ -1,0 +1,7 @@
+query Jokes {
+ joke {
+    joke
+   id id
+  permalink
+  }
+}
