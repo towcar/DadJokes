@@ -8,11 +8,19 @@ No better jokes then dad jokes. Use this quick and easy app for those who need d
 
 Feel free to contribute and suggest updates.
 
-# Usage
+# Features To Add
+* Search by keyword
+* Save favorite jokes
+* Display all dad jokes
+* Generate quick short lists of jokes
+* Splash Screen
+* Improve about screen - https://github.com/medyo/android-about-page
+
+
 
 # Compatibility
   
-  * Android 6.0 Marshmallow (API level 23)
+  * Android 6.0 Marshmallow (API level 23) and newer
   
 # Changelog
 
