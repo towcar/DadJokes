@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import com.carsonskjerdal.dadjokes.Fragments.AboutFragment;
 import com.carsonskjerdal.dadjokes.Fragments.FavoriteFragment;
 import com.carsonskjerdal.dadjokes.Fragments.RandomFragment;
+import com.carsonskjerdal.dadjokes.Fragments.SmallFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -144,27 +145,27 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         switch (slideMenuItem.getName()){
             case "Random":
                 fragment  = RandomFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Random" ).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                 return (ScreenShotable) fragment;
             case "Search":
                 fragment = RandomFragment .newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Scratch" ).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                 return (ScreenShotable) fragment;
             case "Small":
-                fragment= RandomFragment .newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Small" ).commit();
+                fragment= SmallFragment.newInstance();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                 return (ScreenShotable) fragment;
             case "Master":
                 fragment = RandomFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Master").commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                 return (ScreenShotable) fragment;
             case "Favorite":
                 fragment= FavoriteFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "Favorite" ).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                 return (ScreenShotable) fragment;
             case "About":
                 fragment = AboutFragment.newInstance();
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment, "About").commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
                 return (ScreenShotable) fragment;
             default:
                 break;
@@ -207,14 +208,14 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
         list.add(menuItem0);
         SlideMenuItem menuItem = new SlideMenuItem("Random", R.drawable.ic_random);
         list.add(menuItem);
-        SlideMenuItem menuItem2 = new SlideMenuItem("Search", R.drawable.search);
+       /* SlideMenuItem menuItem2 = new SlideMenuItem("Search", R.drawable.search);
         list.add(menuItem2);
         SlideMenuItem menuItem3 = new SlideMenuItem("Small", R.drawable.searchshort);
         list.add(menuItem3);
         SlideMenuItem menuItem4 = new SlideMenuItem("Master", R.drawable.master);
         list.add(menuItem4);
         SlideMenuItem menuItem5 = new SlideMenuItem("Favorite", R.drawable.favorite);
-        list.add(menuItem5);
+        list.add(menuItem5);*/
         SlideMenuItem menuItem6 = new SlideMenuItem("About", R.drawable.about);
         list.add(menuItem6);
 

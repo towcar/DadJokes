@@ -23,12 +23,11 @@ import yalantis.com.sidemenu.interfaces.ScreenShotable;
  * <p>
  * Feel free to use code just give credit please :)
  */
-public class AboutFragment extends Fragment implements ScreenShotable, Button.OnClickListener {
+public class AboutFragment extends Fragment implements ScreenShotable {
 
 
     private View fragment_view;
     private Bitmap bitmap;
-    private TextView text;
 
 
     public static AboutFragment newInstance() {
@@ -38,23 +37,8 @@ public class AboutFragment extends Fragment implements ScreenShotable, Button.On
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_random, container, false);
-        //do search task and assign the joke to text view
-        text = rootView.findViewById(R.id.textView);
-        Button button = rootView.findViewById(R.id.jokeButton);
-        button.setOnClickListener(this);
-        /*
-          When view is created, pre-load joke.
-          Sometimes joke might be ready so we attempt to load joke right away.
-          Eventually set a delay to wait for joke.
-         */
-        if (JokeFetcher.jokeText != null) {
-            text.setText(JokeFetcher.jokeText);
-            Log.e("Refresh", "Text should be set now properly");
-        }
-        //JokeFetcher.setupJoke();
 
-        return rootView;
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
     @Override
@@ -93,42 +77,5 @@ public class AboutFragment extends Fragment implements ScreenShotable, Button.On
         super.onCreate(savedInstanceState);
     }
 
-
-    @Override
-    public void onClick(View view) {
-
-        //do operation according to which modifier button is selected
-        switch (view.getId()) {
-            case R.id.jokeButton:
-                //set text with current joke
-                text.setText(JokeFetcher.jokeText);
-                //call for new joke to set up next request
-                JokeFetcher.setupJoke();
-                break;
-
-        }
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        // Save UI state changes to the savedInstanceState.
-        // This bundle will be passed to onCreate if the process is restarted.
-        savedInstanceState.putString("MyJoke", (String) text.getText());
-
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
-    @Override
-    public void onViewStateRestored(Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        if (savedInstanceState != null) {
-            // Restore last state for checked position.
-            String myString = savedInstanceState.getString("MyJoke");
-            text.setText(myString);
-            Log.e("Item", "" + myString);
-
-        }
-    }
-
-}
