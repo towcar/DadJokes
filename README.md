@@ -15,6 +15,7 @@ The app is currently being published to the app store for ease of download. Othe
 * Splash Screen
 * Improve about screen - https://github.com/medyo/android-about-page
 * Add loading UX controls when pulling data
+* Update Icon
 
 # Compatibility
   
