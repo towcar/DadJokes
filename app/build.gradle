@@ -7,8 +7,8 @@ android {
         applicationId "com.carsonskjerdal.dadjokes"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
@@ -28,6 +28,7 @@ dependencies {
     implementation 'com.github.ozodrukh:CircularReveal:2.0.1@aar'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.github.medyo:android-about-page:1.2.4'
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation 'com.android.support.test:runner:1.0.2'

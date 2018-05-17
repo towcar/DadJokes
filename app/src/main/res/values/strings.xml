@@ -4,6 +4,6 @@
     <string name="drawer_close">Drawer Close</string>
     <string name="action_settings">Settings</string>
     <string name="click_to_get_a_joke">Click to get a joke!</string>
-    <string name="about">Dad Jokes was built as a quick project to practice a bit of simple GraphQL queries. \n\n  While there is plenty of room for many features, time is limited.Any suggestions are appreciated!  \n\n\n   Dad Jokes was built and designed by Carson Skjerdal</string>
+    <string name="about">Dad Jokes was built as a quick project to practice a bit of simple GraphQL queries. \n\n  While there is plenty of room for many features, time is limited.Any suggestions are appreciated!  \n\n   Dad Jokes was built and designed by Carson Skjerdal</string>
     <string name="favorites">You haven\'t saved any favorites yet!</string>
 </resources>
